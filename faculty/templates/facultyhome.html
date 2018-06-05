@@ -1,0 +1,222 @@
+
+<html>
+
+<head>
+
+<title> faculty Screen </title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+
+	#a {
+
+			position: fixed;
+
+			top: 15%;
+			}
+
+
+		.error{
+
+	color:#FFFFFF;
+
+		background-color:#E53935;
+
+				border-color: #a22a27;
+			}
+
+
+
+	.success{
+
+	color: #FFFFFF;
+
+	background-color: #43A047;
+
+		border-color: #2c692f;
+			}
+.warning{
+color:#FFFFFF;
+background-color: #43A047;
+
+		border-color: #2c692f;
+}
+
+
+</style>
+
+</head>
+
+	<body style="background:lightblue">
+	<div style="position:relative;top:0%; right:0%">
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+		<a class="nav-link" href="/home"><button class="btn-lg" style="color:white;background-color:black">Home</button></a>
+   <a class="nav-link" href="/logout"><button class="btn-lg" style="color:white;background-color:black">Logout</button></a>
+
+</nav>
+	</div>
+
+	<div id="" class="col-sm-6 col-sm-offset-3">
+
+<center><h1 style="color:red;font-family:Times new roman;">Choose an Action</h1></center>
+			<br/>
+
+		{% for message in messages %}
+
+ <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+
+	<div class="col-sm-12 col-xs-12 col-md-12">
+
+	<div class="alert {{ message.tags }} alert-dismissable">
+
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+		{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+		<div class=" col-sm-8 text-center" style="margin-left:16.6666%;margin-right:16.66666%">
+
+
+			<form action="/uploadattendance" method="POST">
+         <div class="row">
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				   <label class="col-sm-2 control-label" for="subjectcode">Subject</label>
+				  <div class="col-sm-10">
+					<select id="subjectcode" name="subjectid" class="form-control">
+
+					{% for i in j %}
+                <option value="{{i.subjectid}}">{{i.subjectname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				</div>
+			 </div>
+
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				  <label class="col-sm-2 control-label"  for="branch">Branch</label>
+				  <div class="col-sm-10">
+					<select id="branch" name="branchid" class="form-control">
+
+						{% for i in k %}
+                <option value="{{i.branchid}}">{{i.branchname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				 </div>
+			 </div>
+		  <div class="col-sm-4">
+			  <br>
+				 <button type="submit" class="btn-md btn btn-success">Attendance</button>
+			 </div>
+		 </div>
+			</form>
+
+
+
+
+
+
+
+<br>
+						<form action="/uploadmarks" method="POST">
+         <div class="row">
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				   <label class="col-sm-2 control-label" for="subjectcode">Subject</label>
+				  <div class="col-sm-10">
+					<select id="subjectcode" name="subjectid" class="form-control">
+
+					{% for i in j %}
+                <option value="{{i.subjectid}}">{{i.subjectname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				</div>
+			 </div>
+
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				  <label class="col-sm-2 control-label"  for="branch">Branch</label>
+				  <div class="col-sm-10">
+					<select id="branch" name="branchid" class="form-control">
+
+						{% for i in k %}
+                <option value="{{i.branchid}}">{{i.branchname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				 </div>
+			 </div>
+		  <div class="col-sm-4">
+			  <br>
+				 <button type="submit" class="btn-md btn btn-success">Marks</button>
+			 </div>
+		 </div>
+			</form>
+
+
+			<br>
+						<form action="/updatemarks" method="POST">
+         <div class="row">
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				   <label class="col-sm-2 control-label" for="subjectcode">Subject</label>
+				  <div class="col-sm-10">
+					<select id="subjectcode" name="subjectid" class="form-control">
+
+					{% for i in j %}
+                <option value="{{i.subjectid}}">{{i.subjectname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				</div>
+			 </div>
+
+			 <div class="col-sm-4">
+				 <div class="row form-group">
+				  <label class="col-sm-2 control-label"  for="branch">Branch</label>
+				  <div class="col-sm-10">
+					<select id="branch" name="branchid" class="form-control">
+
+						{% for i in k %}
+                <option value="{{i.branchid}}">{{i.branchname}}</option>
+            {% endfor %}
+					</select>
+				  </div>
+				 </div>
+			 </div>
+		  <div class="col-sm-4">
+			  <br>
+				 <button type="submit" class="btn-md btn btn-success">updateMarks</button>
+			 </div>
+		 </div>
+			</form>
+
+						<br><a href="/updateattendance"><button id="create" name="create" class="col-sm-12 btn-lg btn btn-success">update attendance</button></a><br/><br/>
+<br>
+<a href="/addfacultyinfo"><button id="create" name="create" class="col-sm-12 btn-lg btn btn-success">Profile</button></a><br/><br/>
+
+<br>
+		<a href="/changepassword"><button id="create" name="create" class="col-sm-12 btn-lg btn btn-success">Change Password</button></a><br/><br/>
+<br>
+
+		</div>
+
+
+
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

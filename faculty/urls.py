@@ -1,0 +1,33 @@
+from django.conf.urls import include,url
+from . import views
+
+urlpatterns = [
+    url(r'^$',views.index),
+    url(r'^login',views.stafflogin),
+    url(r'^home',views.home),
+    url(r'^facultypassword',views.facultypassword),
+    url(r'^changepassword',views.changepassword),
+    #url(r'^showfacultydetail',views.showfacultydetail),
+    url(r'^uploadattendance',views.uploadattendance),
+    url(r'^updatefaculty',views.updatefaculty),
+    url(r'^updatestudent',views.updatestudent),
+    #url(r'^updatef',views.showfacultydetail),
+    url(r'^listsubject',views.listsubject),
+    url(r'^allotsubject',views.allotsubject),
+    url(r'^addattendance',views.addattendance),
+    url(r'^updateattendance',views.updateattendance),
+    url(r'^updateattendence',views.updateattendence),
+    url(r'^seeattendancerecord',views.seeattendancerecord),
+    url(r'^seeattendance',views.seeattendance),
+    url(r'^addfaculty',views.addfacultyinfo),
+    url(r'^addstudentinfo',views.addstudentinfo),
+    url(r'^viewattendance',views.viewattendance),
+    url(r'^viewsubjectattendance',views.viewsubjectattendance),
+    url(r'^uploadmarks',views.uploadmarks),
+    url(r'^addmarks',views.addmarks),
+    url(r'^updatemarks',views.updatemarks),
+    url(r'^addmarks',views.addmarks),
+    url(r'^modifymarks',views.modifymarks),
+    url(r'^seemarks',views.seemarks),
+    url(r'^logout',views.logout),
+    ]

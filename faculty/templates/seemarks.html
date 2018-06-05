@@ -1,0 +1,114 @@
+<html>
+
+<head>
+
+<title> faculty Screen </title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+
+	#a {
+
+			position: fixed;
+
+			top: 15%;
+			}
+
+
+		.error{
+
+	color:#FFFFFF;
+
+		background-color:#E53935;
+
+				border-color: #a22a27;
+			}
+
+
+
+	.success{
+
+	color: #FFFFFF;
+
+	background-color: #43A047;
+
+		border-color: #2c692f;
+			}
+.warning{
+color:#FFFFFF;
+background-color: #43A047;
+
+		border-color: #2c692f;
+}
+
+
+</style>
+
+</head>
+
+	<body  style="background:lightblue">
+	<div style="position:relative;top:0%; right:0%">
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+		<a class="nav-link" href="/home"><button class="btn-lg" style="color:white;background-color:black">Home</button></a>
+   <a class="nav-link" href="/logout"><button class="btn-lg" style="color:white;background-color:black">Logout</button></a>
+
+</nav>
+	</div>
+
+	<div id="a" class="col-sm-6 col-sm-offset-3">
+
+<center><h1 style="color:red;font-family:Times new roman;">Marks</h1></center>
+			<br/>
+
+
+
+
+
+
+
+		<div class=" col-sm-10 col-sm-offset-3 text-center">
+
+
+         <table class="table">
+    <thead>
+
+      <tr>
+		  <th>subjectname </th>
+		  <th>internalmarks</th>
+		  <th>externalmarks</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in markslist %}
+      <tr>
+		  <td>{{i.subjectname}}</td>
+          <td>{{i.internalmarks}}</td>
+          <td>{{i.externalmarks}}</td>
+
+
+
+
+
+              </tr>
+    {% endfor %}
+    </tbody>
+
+
+  </table>
+
+
+
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ </body>
+</html>
+

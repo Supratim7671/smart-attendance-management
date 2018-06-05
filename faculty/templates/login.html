@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title> Login Screen </title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			#a {
+				position: fixed;
+				top: 15%;
+			}
+			.error{
+				color:#FFFFFF;
+				background-color:#E53935;
+				border-color: #a22a27;
+			}
+
+			.success{
+				color: #FFFFFF;
+				background-color: #43A047;
+				border-color: #2c692f;
+			}
+		</style>
+	</head>
+	<body  style="background:lightblue">
+		<div id="a" class="col-sm-6 col-sm-offset-3">
+			<center><h2 style="color:red">Login</h2></center>
+			<br/>
+			{% for message in messages %}
+	  <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+		<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="alert {{ message.tags }} alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+			<form class="form-horizontal" action="/login" method="POST">
+				{% csrf_token %}
+				<fieldset>
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="email">email</label>
+				  <div class="col-md-4">
+				  <input id="email" name="email" type="email" placeholder="email id" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="password">Password</label>
+				  <div class="col-md-4">
+					<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="role">Role</label>
+				  <div class="col-md-4">
+					<select id="role" name="role" class="form-control">
+
+						<option value="faculty">Faculty</option>
+					  <option value="student">Student</option>
+					</select>
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <div class="text-center">
+					<button type="submit" class="btn btn-primary">Login</button>
+				  </div>
+				</div>
+
+				</fieldset>
+			</form>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>

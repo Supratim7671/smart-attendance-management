@@ -1,0 +1,150 @@
+<html>
+	<head>
+		<title> UPload attendance </title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			#a {
+				position: fixed;
+				top: 15%;
+			}
+			.error{
+				color:#FFFFFF;
+				background-color:#E53935;
+				border-color: #a22a27;
+			}
+
+			.success{
+				color: #FFFFFF;
+				background-color: #43A047;
+				border-color: #2c692f;
+			}
+		</style>
+	</head>
+	<body  style="background:lightblue">
+    <div style="position:relative;top:0%; right:0%">
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+		<a class="nav-link" href="/home"><button class="btn-lg" style="color:white;background-color:black">Home</button></a>
+   <a class="nav-link" href="/logout"><button class="btn-lg" style="color:white;background-color:black">Logout</button></a>
+
+</nav>
+	</div>
+		<div id="a" class="col-sm-4 col-sm-offset-3">
+			<center><h2 style="color:red">Upload Attendance</h2></center>
+			<br/>
+			{% for message in messages %}
+	  <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+		<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="alert {{ message.tags }} alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+			<form class="form-horizontal" action="/addattendance" method="POST">
+				{% csrf_token %}
+				<fieldset>
+
+
+
+                    	<div class="form-group">
+				  <label class="col-md-4 control-label" for="period">Period</label>
+				  <div class="col-md-4">
+					<select id="period" name="period" class="form-control">
+
+						<option value="1">1</option>
+					  <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                         <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+					</select>
+				  </div>
+				</div>
+
+                    	<div class="form-group">
+				  <label class="col-md-4 control-label" for="mode">Mode</label>
+				  <div class="col-md-4">
+					<select id="mode" name="mode" class="form-control">
+
+						<option value="Lecture">Lecture</option>
+					  <option value="Tutorial">Tutorial</option>
+                        <option value="practical">Practical</option>
+					</select>
+				  </div>
+				</div>
+
+					<div class="form-group">
+				  <label class="col-md-4 control-label" for="date">Date</label>
+				  <div class="col-md-6">
+				  <input id="date" name="date" type="date" placeholder="Date" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+					<div class="form-group">
+				  <label class="col-md-4 control-label" for="date"></label>
+				  <div class="col-md-6">
+				  <input type="hidden" name="branch"  placeholder="brsnch" class="form-control input-md"value="{{branchid}}" required="">
+				  <input type="hidden" name="subject"  placeholder="brsnch" class="form-control input-md"value="{{subjectid}}" required="">
+
+				  </div>
+				</div>
+
+				<!--<div class="form-group">
+				  <div class="text-center">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				  </div>
+				</div>-->
+
+				</fieldset>
+
+		</div>
+
+	<div class="col-sm-4 col-sm-offset-7">
+		 <table class="table">
+    <thead>
+
+      <tr>
+		  <th>studentid</th>
+        <th>name</th>
+        <th>status</th>
+
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in l %}
+      <tr>
+		  <td>{{i.sroll}}</td>
+        <td>{{i.sname}}</td>
+<td>
+	<div class="btn-group" data-toggle="buttons" id="{{i.studentid}}">
+    <label class="btn btn-default">
+	<label>P</label>
+			<input class="form-check-input" name="status{{i.studentid}}" type="radio" id="present{{i.studentid}}" value="P">
+</label>
+
+	<label class="btn btn-default">
+		<label>A</label>
+		<input class="form-check-input" name="status{{i.studentid}}" type="radio" id="absent{{i.studentid}}" value="A">
+	</label>
+
+</div>
+</td>
+
+      </tr>
+{% endfor %}
+    </tbody>
+
+  </table>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+
+		</form>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>

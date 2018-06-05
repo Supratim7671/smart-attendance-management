@@ -1,0 +1,134 @@
+<html>
+
+<head>
+
+<title> faculty Screen </title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+
+	#a {
+
+			position: fixed;
+
+			top: 15%;
+			}
+
+
+		.error{
+
+	color:#FFFFFF;
+
+		background-color:#E53935;
+
+				border-color: #a22a27;
+			}
+
+
+
+	.success{
+
+	color: #FFFFFF;
+
+	background-color: #43A047;
+
+		border-color: #2c692f;
+			}
+.warning{
+color:#FFFFFF;
+background-color: #43A047;
+
+		border-color: #2c692f;
+}
+
+
+</style>
+
+</head>
+
+	<body  style="background:lightblue">
+	<div style="position:relative;top:0%; right:0%">
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+		<a class="nav-link" href="/home"><button class="btn-lg" style="color:white;background-color:black">Home</button></a>
+   <a class="nav-link" href="/logout"><button class="btn-lg" style="color:white;background-color:black">Logout</button></a>
+
+</nav>
+	</div>
+
+	<div id="a" class="col-sm-6 col-sm-offset-3">
+
+<center><h1 style="color:red;font-family:Times new roman;">Attendance Record</h1></center>
+			<br/>
+
+
+
+
+
+
+
+		<div class=" col-sm-10 col-sm-offset-3 text-center">
+
+<form class="form-horizontal" action="/updateattendence" method="POST">
+         <table class="table">
+    <thead>
+
+      <tr>
+		  <th>name</th>
+		  <th>id</th>
+		  <th>status</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in r %}
+      <tr>
+		  <td>{{i.studentname}}</td>
+          <td>{{i.studentid}}</a></td>
+          <td>{{i.status}}</a></td>
+
+          <td><div class="btn-group" data-toggle="buttons" id="{{i.studentid}}">
+             <input type="hidden" name="subjectid" value="{{i.subjectid}}">
+                  <input type="hidden" name="branchid" value="{{i.branchid}}">
+                  <input type="date" style="display:none" name="date" value="{{i.date}}">
+                  <input type="hidden" name="period" value="{{i.period}}">
+                  <input type="hidden" name="modeofclass" value="{{i.modeofclass}}">
+
+
+              <label class="btn btn-default">
+
+	<label>P</label>
+
+
+			<input class="form-check-input" name="status{{i.studentid}}" type="radio" id="present{{i.studentid}}" value="P">
+
+              </label>
+
+
+	<label class="btn btn-default">
+		<label>A</label>
+		<input class="form-check-input" name="status{{i.studentid}}" type="radio" id="absent{{i.studentid}}" value="A" >
+	</label>
+
+</div></a></td>
+
+              </tr>
+    {% endfor %}
+    </tbody>
+
+
+  </table>
+     <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ </body>
+</html>
+
